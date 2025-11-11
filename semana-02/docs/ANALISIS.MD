@@ -10,60 +10,64 @@ La Programación Orientada a Objetos surgió para resolver esto. Se enfoca en mo
 #### PE Facturación:
 
 ```
-public class CalculoFacturaPE {
+public class ProjectStructuredPE {
+    //first project data
+    static String projectCode1 = "PROJECT-001";
+    static String projectArea1 = "Planeación Estratégica";
+    static double projectBudget1 = 5000.00;
 
-    static double tarifaPorHora = 20000.0;
-    static double horasAsesoradas = 2.5; 
-    static double costoBase = 200000.0;
+    //Second data project
+    static String projectCode2 = "PROJECT-002";
+    static String projectArea2 = "Análisis Financiero";
+    static double projectBudget2 = 3500.00;
 
-    public static double calcularCosto(double tarifa, double horas, double base) {
-        return (tarifa * horas) + base;
+    public static void showProjectInfo(String code, String area, double budget) {
+            System.out.println("\n--- PROJECT ---");
+            System.out.println("Project's code: " + code);
+            System.out.println("Project's area: " + area);
+            System.out.println("Project's budget: $" + budget);
+        }
+
+        public static void main(String[] args) {
+            
+            System.out.println("--- Structured Programming example ---");
+            showProjectInfo(projectCode1, projectArea1, projectBudget1);
+            showProjectInfo(projectCode2, projectArea2, projectBudget2);
+        }
     }
 
-    public static void main(String[] args) {
-        double costoFinal = calcularCosto(tarifaPorHora, horasAsesoradas, costoBase);
-        
-        System.out.println("Costo Final (PE): " + costoFinal);
-    }
-}
 
 ```
 #### POO Facturación:
 
 ```
-public class ItemFacturable {
+public class ConsultingProject {
 
-    double tarifaPorHora;
-    double horasAsesoradas;
-    double costoBase;
+    String projectCode;
+    String projectArea;
+    double projectBudget;
 
-    public ItemFacturable(double tarifa, double horas, double base) {
-        this.tarifaPorHora = tarifa;
-        this.horasAsesoradas = horas;
-        this.costoBase = base;
+    public ConsultingProject(String code, String area, double budget) {
+        this.projectCode = code;
+        this.projectArea = area;
+        this.projectBudget = budget;
     }
 
-    public double calcularCosto() {
-        return (this.tarifaPorHora * this.horasAsesoradas) + this.costoBase;
+    public void showProjectInfo() {
+        System.out.println("--- Project POO ---");
+        System.out.println("Project's code: " + this.projectCode);
+        System.out.println("Project's area: " + this.projectArea);
+        System.out.println("Project's budget: $" + this.projectBudget);
     }
 }
 
 public class Main {
+    public static void main (String[] args){
+    ConsultingProject firstProject = new ConsultingProject("PROJECT-001", "Finanzas", 5000.00);
+    ConsultingProject secondProject = new ConsultingProject("PROJECT-002", "Administracion", 3500.00);
+    firstProject.showProjectInfo();
+    secondProject.showProjectInfo();
 
-    public static void main(String[] args) {
-        ItemFacturable asesoriaMarketing = new ItemFacturable(20000.0, 2.5, 200000.0);
-        
-        double costoFinal = asesoriaMarketing.calcularCosto();
-
-        System.out.println("Costo Final (POO): " + costoFinal);
     }
 }
 ```
-
-**Instrucciones:**
-- Investiga las diferencias entre programación estructurada y POO
-- Escribe un ejemplo conceptual de cómo se manejaría la información de un proyecto en:
-  1. **Programación estructurada** (usando variables sueltas y funciones)
-  2. **Programación orientada a objetos** (usando una clase)
-
-**Entregable:** Documento comparativo con ejemplos explicados.
