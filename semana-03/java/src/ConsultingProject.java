@@ -1,18 +1,17 @@
-import javax.print.DocFlavor;
 
 public class ConsultingProject {
     private String projectId;
-    private String projectArea;
+    private String projectTitle;
     private double projectBudget;
 
-    public ConsultingProject(String projectId, String projectArea, double projectBudget ) {
+    public ConsultingProject(String projectId, String projectTitle, double projectBudget ) {
         this.projectId = projectId;
-        this.projectArea = projectArea;
+        this.projectTitle = projectTitle;
         this.projectBudget = projectBudget ;
     }
     public void ShowProjectInfo(){
         System.out.println("Project's Id: " + projectId);
-        System.out.println("Project's Area: " + projectArea );
+        System.out.println("Project's name is: " + projectTitle );
         System.out.println("Project's duration: " + projectBudget);
     }
 }

@@ -98,7 +98,7 @@ Documento legal y financiero que genera la empresa por la transacción de dinero
 * consultarEstadoPago()
 * envíoEmail()
 ---
-### 📉 Diagrama de Clases (UML)
+### 2. 📉 Diagrama de Clases (UML)
 
 ```mermaid
 classDiagram
@@ -157,15 +157,15 @@ classDiagram
     ProyectoDeConsultoria "1" -- "1" AreaDeEspecialidad : perteneceA
 
 ```
-## 2. Dificultades Encontradas
+## 3. Dificultades Encontradas
 Al realizar la identificacion de los objetos de la consultoria he identificado deficiencias en la relacion o conocimento acerca del tipo de proyecto. No conozco realmente que proceso hace la consultoria, mi conocimiento acerca de esto era casi nulo y tuve que recurrrir a herramientas de apoyo para generar contexto y al menos unas buenas bases para poder hacer la actividad de la mejor manera.
 Esto genero en mi poca motivacion y con ayuda de la IA conoci que aspectos, cualidades, y metodos puede contener cadas objeto y que pudiera ser cercano o funcional con base a las directrices de la consultoria.
 
 
-## 3. Decisiones de Diseño
-**¿Por qué elegí estos atributos?**
+## 4. Decisiones de Diseño
+- **¿Por qué elegí estos atributos?**
 Principalmente porque se me hicieron que iban acorde al objeto en si, obviamente, sin dejar de lado que son basicos o no tan complicados lo que permite que en las proximas actividades pueda desenvolverme mejor, sin tanta complicacion.
 
-**¿Qué validaciones implementé?**
+- **¿Qué validaciones implementé?**
 Implente validaciones con la IA y con diferentes paginas web donde pueda entender realmente las acciones y cargos de una empresa con este objetivo. Con criterio, comprendi las metas de este tipo de empresas y los actores que se desenvuelven en estas areas.
 

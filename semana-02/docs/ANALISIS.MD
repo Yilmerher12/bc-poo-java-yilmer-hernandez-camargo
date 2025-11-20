@@ -6,7 +6,7 @@ Ambos son paradigmas que definen cómo se estructura el código. La Programació
 
 La Programación Orientada a Objetos surgió para resolver esto. Se enfoca en modelar entidades del mundo real que son los objetos. Su concepto central consiste en agrupar los datos (atributos) y las acciones (métodos) en una sola unidad llamada Clase algo que se le denomina Encapsulameiento. La POO utiliza los conceptos de la Programacion Estructurada (como los bucles y condicionales) internamente, pero aporta una capa de modularidad lo que significa que nos permite separar el codigo en modulos o partes y que hace el código más legible y robusto.
 
-### Ejemplo conceptual de cómo se manejaría la información de un proyecto en PE POO:
+### Ejemplo conceptual de cómo se manejaría la información de un proyecto en PE y POO:
 #### PE Facturación:
 
 ```

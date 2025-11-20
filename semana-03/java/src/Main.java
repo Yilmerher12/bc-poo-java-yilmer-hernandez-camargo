@@ -1,6 +1,6 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main() {
+
+public class Main {
+    public static void main(String[] args)  {
     // Se instancia los 3 objetos diferentes con base a la clase ConsultingProject
     ConsultingProject financialProject = new ConsultingProject("CONS-001", "Orientacion Financiera", 3000000 );
     ConsultingProject marketingProject = new ConsultingProject("CONS-002", "Orientacion en Marketing", 4000000 );
@@ -15,4 +15,5 @@ void main() {
     managmentTalentProject.ShowProjectInfo();
 
 
+    }
 }
