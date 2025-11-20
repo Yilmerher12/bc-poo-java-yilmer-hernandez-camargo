@@ -1,44 +1,34 @@
 # Bootcamp POO Java - Yilmer Hernandez Camargo
+## 💼 Dominio
+**Dominio Asignado:** Consultoría Empresarial "Soluciones Estratégicas"
 
-## Semana-02: Clases y Objetos
-Se presenta la carpeta con la segunda actividad del projecto. Se realizo con las directrices que se presentan en el documento. Tambien, adjunto instrucciones y como se separo la realizacion de los dos puntos de la `Actividad 2`.
+**Nombre:** `README.md` (dentro de la carpeta `semana-02/`)
 
-
-**Nombre:** `README.md` (dentro de cada carpeta `semana-02/`)
-
-**Contenido mínimo:**
-
-```markdown
-# Semana [XX] - [Tema de la Semana]
+## Semana 02 Comparación de Paradigmas
 
 ## 📝 Descripción
 
-[Breve descripción de lo implementado esta semana]
+Se realiza la Comparación de paradigmas los cuales son la programación estructurada (PE) y la Programación Orientada a Objetos (POO) de la Actividad 2.
 
 ## 🎯 Objetivos Cumplidos
 
-- [x] Implementar clase principal del dominio
-- [x] Implementar clase secundaria relacionada
-- [x] Crear programa de demostración
-- [x] Documentar análisis del dominio
+- [x] Comparación entre los paradigmas (PE y POO).
+- [x] Ejemplos de codigo usando JAVA comparando los dos paradigmas.
+- [x] Documentar análisis del dominio y desafios a los que se enfrentó.
 
 ## 📂 Archivos Entregados
 
-- `src/ConsultingProject.java` - Demostracion paradigma POO con base a un ejemplo sobre la consultoria.
-- `src/ProjectStructured.java` - Demostracion paradigma PE con base a un ejemplo sobre la consultoria y el Main.
-- `src/Main.java` - Programa de demostración
-- `docs/ANALISIS.md` - Análisis del dominio
+- `docs` - Carpeta donde se encuentra el archivo ANALISIS.md
+- `docs/ANALISIS.md` - Documento .md que contiene el analisis y comparacion de los dos paradigmas
+- `java` - Carpeta que contiene el proyecto JAVA con sus archivos compilados y .java
+- `java/src` - Archivos .java con la realizacion de la actividad en PE y POO
+- `README.md` - Documento que muestra la información acerca de la actividad que corresponde a la semana-02
 
+### 🔗 Comparación de los paradigmas PE y POO
+Revisar la carpeta [src](java/src/) para encontrar los archivos necesarios para ejecutas codigo JAVA que son correspondientes a la actividad 2.
 ## 🚀 Instrucciones de Ejecución
 
 ```bash
 cd src
 javac *.java
 java Main
-
-
-## Instrucciones: ##
-- El archivo ANALISIS.md contiene toda la comparación entre estos dos paradigmas asi como el codigo en texto plano.
-- Para ejecutar los dos ejemplos en llava dentro de la carpeta 'java' se encuentran todos los archivos, asi como las clases que le pertenecen a cada paradigma.
-- En la clase nombrada 'ProjectStructuredPE' se encuentra el ejemplo de programación estructurada con sus respectivo archivo Main (Lo intente hacer asi por organizacion) para ejecutarlo.
-- En la clase 'ConsultingProject' se encuentra la clase principal usando el paradigma POO. Sus atributos, constructor y metodos se encuentran ahi, y en la clase 'Main' se ejecuta

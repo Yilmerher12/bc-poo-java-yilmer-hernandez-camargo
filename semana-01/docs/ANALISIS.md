@@ -41,7 +41,6 @@ La empresa que contrata los servicios de la consultoría Empresarial "Soluciones
 * realizarPago()
 * darRecomendaciones()
 
----
 
 ### Objeto 3: Proyecto de Consultoría
 
@@ -98,6 +97,65 @@ Documento legal y financiero que genera la empresa por la transacción de dinero
 * registrarPago()
 * consultarEstadoPago()
 * envíoEmail()
+---
+### 📉 Diagrama de Clases (UML)
+
+```mermaid
+classDiagram
+    direction LR
+
+    %% Definición de Clases
+    class Consultor {
+        + String nombre
+        + String especialidad
+        + String idConsultor
+        + int antiguedad
+        + double tarifaPorHora
+        + asignarProyecto()
+        + registrarHorasTrabajadas()
+        + enviarInformes()
+    }
+
+    class Cliente {
+        + String nit
+        + String nombreEmpresa
+        + String contacto
+        + String sector
+        + String ubicacion
+        + String estadoCuenta
+        + solicitarServicio()
+        + realizarPago()
+        + darRecomendaciones()
+    }
+
+    class ProyectoDeConsultoria {
+        + String codigo
+        + String area
+        + double presupuesto
+        + Date fechaInicio
+        + String estado
+        + crearProyecto()
+        + asignarConsultor()
+        + finalizarProyecto()
+        + facturar()
+    }
+
+    class AreaDeEspecialidad {
+        + String nombreArea
+        + String descripcion
+        + double costoBase
+        + List<Consultor> consultoresLideres
+        + definirEstrategia()
+        + promocionarArea()
+        + capacitarPersonal()
+    }
+
+    %% Relaciones de Asociación
+    Cliente "1" --> "*" ProyectoDeConsultoria : genera
+    ProyectoDeConsultoria "*" -- "1..*" Consultor : asignadoA
+    Consultor "*" -- "1..*" AreaDeEspecialidad : tieneEspecialidad
+    ProyectoDeConsultoria "1" -- "1" AreaDeEspecialidad : perteneceA
+
 
 ## 2. Dificultades Encontradas
 Al realizar la identificacion de los objetos de la consultoria he identificado deficiencias en la relacion o conocimento acerca del tipo de proyecto. No conozco realmente que proceso hace la consultoria, mi conocimiento acerca de esto era casi nulo y tuve que recurrrir a herramientas de apoyo para generar contexto y al menos unas buenas bases para poder hacer la actividad de la mejor manera.

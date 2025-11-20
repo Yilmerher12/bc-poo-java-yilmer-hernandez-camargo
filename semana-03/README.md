@@ -1,30 +1,32 @@
+# Bootcamp POO Java - Yilmer Hernandez Camargo
+## 💼 Dominio
+**Dominio Asignado:** Consultoría Empresarial "Soluciones Estratégicas"
 
-### 5. README por Semana
+**Nombre:** `README.md` (dentro de la carpeta `semana-03/`)
 
-**Nombre:** `README.md` (dentro de cada carpeta `semana-XX/`)
-
-**Contenido mínimo:**
-
-```markdown
-# Semana [XX] - [Tema de la Semana]
+## Semana 03 Primera Clase Simple 
 
 ## 📝 Descripción
 
-[Breve descripción de lo implementado esta semana]
+Se crear la primera clase simple con 3 atributos y 1 método que corresponde a la actividad 3.
 
 ## 🎯 Objetivos Cumplidos
 
-- [x] Implementar clase principal del dominio
-- [x] Implementar clase secundaria relacionada
-- [x] Crear programa de demostración
-- [x] Documentar análisis del dominio
+- [x] Estructuracion primera clase en JAVA.
+- [x] Identificacion de atributos y metodo de la clase.
+- [x] Intanciación de 3 objetos en el archivo Main.java
+- [x] Uso de buenas practicas.
 
 ## 📂 Archivos Entregados
 
-- `src/[ClasePrincipal].java` - [Descripción breve]
-- `src/[ClaseSecundaria].java` - [Descripción breve]
-- `src/Main.java` - Programa de demostración
-- `docs/ANALISIS.md` - Análisis del dominio
+- `docs` - Carpeta donde se encuentra el archivo ANALISIS.md
+- `docs/ANALISIS.md` - 
+- `java` - Carpeta que contiene el proyecto JAVA con sus archivos compilados y .java
+- `java/src` - Archivos .java con la realizacion de la actividad en PE y POO
+- `README.md` - Documento que muestra la información acerca de la actividad correspondiente a la semana-03
+
+### 🔗 Comparación de los paradigmas PE y POO
+Revisar la carpeta [src](java/src/) para encontrar los archivos necesarios para ejecutas codigo JAVA que son correspondientes a la actividad 3.
 
 ## 🚀 Instrucciones de Ejecución
 

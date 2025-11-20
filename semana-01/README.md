@@ -19,11 +19,12 @@ Se realiza la identificacion de clases y objetos con base a los dominios asignad
 
 ## 📂 Archivos Entregados
 
-- `src/docs` - Carpeta donde se encuentra el archivo ANALISIS.md
-- [ANALISIS.md](src/docs/ANALISIS.md) - Documento .md que contiene el analisis del dominio 
-- `src/README.md` - Documento donde se documenta información acerca de la semana
-- ### 🔗 Análisis del Dominio
-Revisar el archivo [ANALISIS.md](/ANALISIS.md) para el detalle de la asignación de atributos y métodos.
+- `docs` - Carpeta donde se encuentra el archivo ANALISIS.md
+- `docs/ANALISIS.md` - Documento .md que contiene el analisis del dominio 
+- `README.md` - Documento donde se documenta información acerca de la semana
+
+### 🔗 Análisis del Dominio
+Revisar el archivo [ANALISIS.md](docs/ANALISIS.md) para el detalle de la asignación de atributos y métodos.
 
 ## 🚀 Instrucciones de Ejecución
 
