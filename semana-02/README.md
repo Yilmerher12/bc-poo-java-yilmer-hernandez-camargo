@@ -3,7 +3,6 @@
 ## Semana-02: Clases y Objetos
 Se presenta la carpeta con la segunda actividad del projecto. Se realizo con las directrices que se presentan en el documento. Tambien, adjunto instrucciones y como se separo la realizacion de los dos puntos de la `Actividad 2`.
 
-## Semana 2
 
 **Nombre:** `README.md` (dentro de cada carpeta `semana-02/`)
 
@@ -25,8 +24,8 @@ Se presenta la carpeta con la segunda actividad del projecto. Se realizo con las
 
 ## 📂 Archivos Entregados
 
-- `src/ConsultingProject.java` - Clase con atributos y metodos de la consultoria.
-- `src/ProjectStructured.java` - [Descripción breve]
+- `src/ConsultingProject.java` - Demostracion paradigma POO con base a un ejemplo sobre la consultoria.
+- `src/ProjectStructured.java` - Demostracion paradigma PE con base a un ejemplo sobre la consultoria y el Main.
 - `src/Main.java` - Programa de demostración
 - `docs/ANALISIS.md` - Análisis del dominio
 

@@ -1,4 +1,6 @@
 # Bootcamp POO Java - Yilmer Hernandez Camargo
+## 💼 Dominio
+**Dominio Asignado:** Consultoría Empresarial "Soluciones Estratégicas"
 
 **Nombre:** `README.md` (dentro de la carpeta `semana-01/`)
 
@@ -21,7 +23,7 @@ Se realiza la identificacion de clases y objetos con base a los dominios asignad
 - [ANALISIS.md](src/docs/ANALISIS.md) - Documento .md que contiene el analisis del dominio 
 - `src/README.md` - Documento donde se documenta información acerca de la semana
 - ### 🔗 Análisis del Dominio
-Revisar el archivo [ANALISIS.md](src/semana-01/docs/ANALISIS.md) para el detalle de la asignación de atributos y métodos.
+Revisar el archivo [ANALISIS.md](/ANALISIS.md) para el detalle de la asignación de atributos y métodos.
 
 ## 🚀 Instrucciones de Ejecución
 
