@@ -156,7 +156,7 @@ classDiagram
     Consultor "*" -- "1..*" AreaDeEspecialidad : tieneEspecialidad
     ProyectoDeConsultoria "1" -- "1" AreaDeEspecialidad : perteneceA
 
-
+```
 ## 2. Dificultades Encontradas
 Al realizar la identificacion de los objetos de la consultoria he identificado deficiencias en la relacion o conocimento acerca del tipo de proyecto. No conozco realmente que proceso hace la consultoria, mi conocimiento acerca de esto era casi nulo y tuve que recurrrir a herramientas de apoyo para generar contexto y al menos unas buenas bases para poder hacer la actividad de la mejor manera.
 Esto genero en mi poca motivacion y con ayuda de la IA conoci que aspectos, cualidades, y metodos puede contener cadas objeto y que pudiera ser cercano o funcional con base a las directrices de la consultoria.
