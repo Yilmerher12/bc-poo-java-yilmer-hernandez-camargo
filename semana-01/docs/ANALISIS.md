@@ -1,7 +1,5 @@
 # Semana 1 Consultoría Empresarial "Soluciones Estratégicas"
 
-// Me falta cambiar esto
-
 # Análisis Orientado a Objetos - Consultoría Empresarial
 
 ## 1. Identificación del Dominio
