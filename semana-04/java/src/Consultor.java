@@ -1,81 +1,87 @@
 public class Consultor {
 
-    // ATRIBUTOS PRIVATE
-    private String idConsultor;
-    private String nombreConsultor;
-    private String especialidadConsultor;
-    private double tarifaPorHora;
-    private int anosDeServicio;
+    // 1. ATRIBUTOS
+    protected String idConsultor;
+    protected String nombreConsultor;
+    protected String especialidadConsultor;
+    protected double tarifaPorHora;
+    protected int anosDeServicio;
 
-    // CONSTRUCTOR 1 (PRINCIPAL / COMPLETO)
+    // CONSTRUCTOR
     public Consultor(String idConsultor, String nombreConsultor, String especialidadConsultor, double tarifaPorHora, int anosDeServicio) {
-        // Llama a los setters con validación
-        establecerIdConsultor(idConsultor);
-        establecerNombreConsultor(nombreConsultor);
+        setIdConsultor(idConsultor);
+        setNombreConsultor(nombreConsultor);
         this.especialidadConsultor = especialidadConsultor;
-        establecerTarifaPorHora(tarifaPorHora);
-        establecerAnosDeServicio(anosDeServicio);
+        setTarifaPorHora(tarifaPorHora);
+        setAnosDeServicio(anosDeServicio);
     }
 
-    // SOBRECARGA DE CONSTRUCTORES
+    // Sobrecarga del constructor de arriba
     public Consultor(String idConsultor, String nombreConsultor, String especialidadConsultor, double tarifaPorHora) {
-        // Constructor 2: Asume 0 años de servicio.
         this(idConsultor, nombreConsultor, especialidadConsultor, tarifaPorHora, 0);
     }
 
     public Consultor(String idConsultor, String nombreConsultor) {
-        // Constructor 3: Asume especialidad "General", tarifa 30.0 y 0 años.
         this(idConsultor, nombreConsultor, "General", 30.0, 0);
     }
 
-    // MÉTODO DE NEGOCIO
+    // Metodos
+
+    // Para calcular el costo del consultor mensual
     public double calcularCostoMensualEstimado(int horasMensuales) {
         return this.tarifaPorHora * horasMensuales;
     }
 
+    // Para mostrar info
+    public void mostrarInformacionBase() {
+        System.out.println("ID: " + this.idConsultor +
+                " | Nombre: " + this.nombreConsultor +
+                " | Especialidad: " + this.especialidadConsultor +
+                " | Tarifa Base: $" + this.tarifaPorHora);
+    }
+
     // MÉTODO AUXILIAR PRIVADO
     private boolean esIdValido(String id) {
-        // Regla: ID no nulo, debe empezar con 'C' y tener al menos 4 caracteres.
         return id != null && id.toUpperCase().startsWith("C") && id.length() >= 4;
     }
 
-    // GETTERS
-    public String obtenerIdConsultor() { return idConsultor; }
-    public String obtenerNombreConsultor() { return nombreConsultor; }
-    public String obtenerEspecialidadConsultor() { return especialidadConsultor; }
-    public double obtenerTarifaPorHora() { return tarifaPorHora; }
-    public int obtenerAnosDeServicio() { return anosDeServicio; }
+    // Getters
+    public String getIdConsultor() { return idConsultor; }
+    public String getNombreConsultor() { return nombreConsultor; }
+    public String getEspecialidadConsultor() { return especialidadConsultor; }
+    public double getTarifaPorHora() { return tarifaPorHora; }
+    public int getAnosDeServicio() { return anosDeServicio; }
 
-    // SETTERS CON VALIDACIÓN
-    public void establecerIdConsultor(String idConsultor) {
+    // Setters
+    public void setIdConsultor(String idConsultor) {
         if (!esIdValido(idConsultor)) {
             throw new IllegalArgumentException("ID inválido. Debe empezar con 'C' y tener al menos 4 caracteres.");
         }
         this.idConsultor = idConsultor;
     }
 
-    public void establecerNombreConsultor(String nombreConsultor) {
+    public void setNombreConsultor(String nombreConsultor) {
         if (nombreConsultor == null || nombreConsultor.trim().isEmpty()) {
             throw new IllegalArgumentException("El nombre del consultor no puede ser vacío.");
         }
         this.nombreConsultor = nombreConsultor;
     }
 
-    public void establecerTarifaPorHora(double tarifaPorHora) {
+    public void setTarifaPorHora(double tarifaPorHora) {
         if (tarifaPorHora <= 0) {
             throw new IllegalArgumentException("La tarifa por hora debe ser mayor que cero.");
         }
         this.tarifaPorHora = tarifaPorHora;
     }
 
-    public void establecerAnosDeServicio(int anosDeServicio) {
+    public void setAnosDeServicio(int anosDeServicio) {
         if (anosDeServicio < 0) {
             throw new IllegalArgumentException("Los años de servicio no pueden ser negativos.");
         }
         this.anosDeServicio = anosDeServicio;
     }
 
-    public void establecerEspecialidadConsultor(String especialidadConsultor) {
+    public void setEspecialidadConsultor(String especialidadConsultor) {
         this.especialidadConsultor = especialidadConsultor;
     }
 }
