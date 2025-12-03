@@ -1,87 +1,82 @@
 public class Consultor {
 
-    // 1. ATRIBUTOS PRIVATE
-    private String idConsultant;
-    private String consultantName;
-    private String consultantSpeciality;
-    private double hourlyFee;
-    private int yearsOfService;
+    // ATRIBUTOS PRIVATE (Estado final Semana 03)
+    private String idConsultor;
+    private String nombreConsultor;
+    private String especialidadConsultor;
+    private double tarifaPorHora;
+    private int anosDeServicio; 
 
-    // CONSTRUCTOR 1 (PRINCIPAL / COMPLETO): 5 parámetros.
-    public Consultor(String idConsultant, String consultantName, String consultantSpeciality, double hourlyFee, int yearsOfService) {
-        // Llama a los setters con validación
-        setIdConsultant(idConsultant);
-        setConsultantName(consultantName);
-        this.consultantSpeciality = consultantSpeciality;
-        setHourlyFee(hourlyFee);
-        setYearsOfService(yearsOfService);
+    // CONSTRUCTOR 1
+    public Consultor(String idConsultor, String nombreConsultor, String especialidadConsultor, double tarifaPorHora, int anosDeServicio) {
+        setIdConsultor(idConsultor);
+        setNombreConsultor(nombreConsultor);
+        this.especialidadConsultor = especialidadConsultor;
+        setTarifaPorHora(tarifaPorHora);
+        setAnosDeServicio(anosDeServicio);
     }
 
-    // CONSTRUCTOR 2 (BÁSICO): 4 parámetros. Asume 0 años de servicio.
-    public Consultor(String idConsultant, String consultantName, String consultantSpeciality, double hourlyFee) {
-        // Llama al Constructor 1, fijando yearsOfService a 0
-        this(idConsultant, consultantName, consultantSpeciality, hourlyFee, 0);
+    // SOBRECARGA DE CONSTRUCTORES
+    public Consultor(String idConsultor, String nombreConsultor, String especialidadConsultor, double tarifaPorHora) {
+        this(idConsultor, nombreConsultor, especialidadConsultor, tarifaPorHora, 0);
+    }
+    public Consultor(String idConsultor, String nombreConsultor) {
+        this(idConsultor, nombreConsultor, "General", 30.0, 0);
     }
 
-    // CONSTRUCTOR 3 (MÍNIMO): 2 parámetros. Asume especialidad "General", tarifa 30.0 y 0 años.
-    public Consultor(String idConsultant, String consultantName) {
-        // Llama al Constructor 1, asumiendo valores por defecto
-        this(idConsultant, consultantName, "General", 30.0, 0);
+    // MÉTODOS
+    public double calcularCostoMensualEstimado(int horasMensuales) {
+        return this.tarifaPorHora * horasMensuales;
+    }
+    public void mostrarInformacionBase() {
+        System.out.println("ID: " + this.idConsultor + " | Nombre: " + this.nombreConsultor + 
+    " | Especialidad: " + this.especialidadConsultor +
+    " | Tarifa Base: $" + this.tarifaPorHora);
     }
 
-    // MÉTODO DE NEGOCIO
-    public double calculateEstimatedMonthlyCost(int horasMensuales) {
-        return this.hourlyFee * horasMensuales;
-    }
-
-    // --- NUEVO ---
-    // MÉTODO AUXILIAR PRIVADO: Valida que el ID cumpla el formato
-    private boolean isValidId(String id) {
-        // Regla: ID no nulo, debe empezar con 'C' y tener al menos 4 caracteres.
+    // GETTERS y SETTERS
+    private boolean esIdValido(String id) {
         return id != null && id.toUpperCase().startsWith("C") && id.length() >= 4;
     }
+    public String getIdConsultor() { 
+        return idConsultor; 
+    }
+    public String getNombreConsultor() { 
+        return nombreConsultor; 
+    }
+    public String getEspecialidadConsultor() { 
+        return especialidadConsultor; 
+    }
+    public double getTarifaPorHora() { 
+        return tarifaPorHora; 
+    }
+    public int getAnosDeServicio() { 
+        return anosDeServicio; 
+    }
 
-    // GETTERS (Solo retornan el valor)
-    public String getIdConsultant() { return idConsultant; }
-    public String getConsultantName() { return consultantName; }
-    public String getConsultantSpeciality() { return consultantSpeciality; }
-    public double getHourlyFee() { return hourlyFee; }
-    public int getYearsOfService() { return yearsOfService; }
-
-    // SETTERS CON VALIDACIÓN (Cumplen con Encapsulación Completa)
-
-    public void setIdConsultant(String idConsultant) {
-        if (!isValidId(idConsultant)) { // Usa el método privado auxiliar
+    public void setIdConsultor(String idConsultor) {
+        if (!esIdValido(idConsultor)) {
             throw new IllegalArgumentException("ID inválido. Debe empezar con 'C' y tener al menos 4 caracteres.");
         }
-        this.idConsultant = idConsultant;
+        this.idConsultor = idConsultor;
     }
-
-    public void setConsultantName(String consultantName) {
-        // Validación: Nombre no puede ser nulo o vacío
-        if (consultantName == null || consultantName.trim().isEmpty()) {
+    public void setNombreConsultor(String nombreConsultor) {
+        if (nombreConsultor == null || nombreConsultor.trim().isEmpty()) {
             throw new IllegalArgumentException("El nombre del consultor no puede ser vacío.");
         }
-        this.consultantName = consultantName;
+        this.nombreConsultor = nombreConsultor;
     }
-
-    public void setHourlyFee(double hourlyFee) {
-        // Validación: Tarifa debe ser positiva
-        if (hourlyFee <= 0) {
+    public void setTarifaPorHora(double tarifaPorHora) {
+        if (tarifaPorHora <= 0) {
             throw new IllegalArgumentException("La tarifa por hora debe ser mayor que cero.");
         }
-        this.hourlyFee = hourlyFee;
+        this.tarifaPorHora = tarifaPorHora;
     }
-
-    public void setYearsOfService(int yearsOfService) {
-        // Validación: Años de servicio no pueden ser negativos
-        if (yearsOfService < 0) {
+    public void setAnosDeServicio(int anosDeServicio) {
+        if (anosDeServicio < 0) {
             throw new IllegalArgumentException("Los años de servicio no pueden ser negativos.");
         }
-        this.yearsOfService = yearsOfService;
+        this.anosDeServicio = anosDeServicio;
     }
-
-    public void setConsultantSpeciality(String consultantSpeciality) {
-        this.consultantSpeciality = consultantSpeciality;
-    }
+    public void setEspecialidadConsultor(String especialidadConsultor) { this.especialidadConsultor = especialidadConsultor; }
 }

@@ -1,96 +1,72 @@
 public class Cliente {
-
-    // Atributos (Mínimo 3)
     private String nit;
-    private String companyName;
-    private String principalContact;
-    private String companySector;
-    private double accountStatus;
+    private String nombreEmpresa;
+    private String contactoPrincipal;
+    private String sectorEmpresa;
+    private double estadoCuenta; 
 
-    // CONSTRUCTOR 1 (COMPLETO / PRINCIPAL): Recibe todos los datos.
-    public Cliente(String nit, String companyName, String principalContact, String companySector, double accountStatus) {
-        // Llama a los setters con validación (Ej. 1)
+    // CONSTRUCTOR 1
+    public Cliente(String nit, String nombreEmpresa, String contactoPrincipal, String sectorEmpresa, double estadoCuenta) {
         setNit(nit);
-        setCompanyName(companyName);
-        this.principalContact = principalContact;
-        this.companySector = companySector;
-        this.accountStatus = accountStatus;
+        setNombreEmpresa(nombreEmpresa);
+        this.contactoPrincipal = contactoPrincipal;
+        this.sectorEmpresa = sectorEmpresa;
+        this.estadoCuenta = estadoCuenta;
     }
 
-    // SOBRECARGA CONSTRUCTORES
-
-    // CONSTRUCTOR 2 (BÁSICO): Recibe 4 parámetros, el saldo es por defecto 0.0
-    public Cliente(String nit, String companyName, String principalContact, String companySector) {
-        // Llama al Constructor 1 (el completo) con un valor fijo de 0.0 para el saldo.
-        // Esto asegura que la validación se ejecute.
-        this(nit, companyName, principalContact, companySector, 0.0);
+    // SOBRECARGA DE CONSTRUCTORES
+    public Cliente(String nit, String nombreEmpresa, String contactoPrincipal, String sectorEmpresa) {
+        this(nit, nombreEmpresa, contactoPrincipal, sectorEmpresa, 0.0);
+    }
+    public Cliente(String nit, String nombreEmpresa) {
+        this(nit, nombreEmpresa, "N/A", "General", 0.0);
     }
 
-    // CONSTRUCTOR 3 (MÍNIMO): Recibe solo 2 parámetros (NIT y Nombre).
-    public Cliente(String nit, String companyName) {
-        // Llama al Constructor 1, fijando Contacto a "N/A" y Sector a "General", y Saldo a 0.0.
-        this(nit, companyName, "N/A", "General", 0.0);
+    // MÉTODOS DE NEGOCIO
+    public boolean tieneDeudaPendiente() {
+        return this.estadoCuenta > 0;
     }
-
-    // MÉTODOS DE NEGOCIO (Ya existentes)
-    public boolean hasAPendingDebt() {
-        return this.accountStatus > 0;
+    public void actualizarEstadoCuenta(double monto) {
+        this.estadoCuenta += monto;
     }
-
-    public void updatedAccountStatus(double monto) {
-        this.accountStatus += monto;
-    }
-
-    // --- NUEVO ---
-    private boolean isNitValid(String nit) {
-        // Validación: NIT debe tener al menos 6 caracteres y no ser nulo.
-        // Si el NIT es válido, el método devuelve TRUE.
+    private boolean esNitValido(String nit) {
         return nit != null && nit.length() >= 6;
     }
 
-    // GETTERS (Solo retornan el valor)
+    // GETTERS
     public String getNit() {
-        return nit;
+        return nit; 
     }
-    public String getCompanyName() {
-            return companyName;
-        }
-    public String getPrincipalContact() {
-            return principalContact;
-        }
-    public String getCompanySector() {
-            return companySector;
-        }
-    public double getAccountStatus() {
-            return accountStatus;
-        }
-
-    // SETTERS CON VALIDACIÓN (Cumplen con el Ejercicio 1)
-
-    public void setCompanyName(String companyName) {
-        // VALIDACIÓN: El nombre no puede ser nulo o vacío
-        if (companyName == null || companyName.trim().isEmpty()) {
-            // Sintaxis 'THROW': Si falla la validación, lanzamos un error.
+    public String getNombreEmpresa() {
+        return nombreEmpresa; 
+    }
+    public String getContactoPrincipal() {
+        return contactoPrincipal; 
+    }
+    public String getSectorEmpresa() {
+        return sectorEmpresa;
+    }
+    public double getEstadoCuenta() { 
+        return estadoCuenta; 
+    }
+    
+    // SETTERS
+    public void setNombreEmpresa(String nombreEmpresa) {
+        if (nombreEmpresa == null || nombreEmpresa.trim().isEmpty()) {
             throw new IllegalArgumentException("El nombre de la empresa no puede ser nulo o vacío.");
         }
-        this.companyName = companyName;
+        this.nombreEmpresa = nombreEmpresa;
     }
-
     public void setNit(String nit) {
-        // VALIDACIÓN: Usa el método auxiliar privado
-        if (!isNitValid(nit)) {
-            // Si el método privado devuelve FALSE (!isNitValid), lanzamos error.
+        if (!esNitValido(nit)) {
             throw new IllegalArgumentException("NIT inválido. Debe tener al menos 6 caracteres.");
         }
         this.nit = nit;
     }
-
-    // El resto de setters son simples ya que no tienen restricciones lógicas fuertes:
-    public void setPrincipalContact(String principalContact) {
-        this.principalContact = principalContact;
+    public void setContactoPrincipal(String contactoPrincipal) {
+        this.contactoPrincipal = contactoPrincipal; 
     }
-
-    public void setCompanySector(String companySector) {
-        this.companySector = companySector;
+    public void setSectorEmpresa(String sectorEmpresa) { 
+        this.sectorEmpresa = sectorEmpresa; 
     }
 }
