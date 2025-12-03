@@ -18,39 +18,6 @@ ConsultorSenior      ConsultorJunior
 
 Este es el código **seguro y corregido** para renderizar el diagrama estético. Debe funcionar si tu editor soporta Mermaid:
 
-```mermaid
-graph TD
-    classDef parent fill:#4CAF50,stroke:#388E3C,color:#ffffff;
-    classDef child fill:#81C784,stroke:#4CAF50,color:#000000;
-    classDef method fill:#E0F7FA,stroke:#00BCD4;
-    
-    subgraph Pilar de Herencia
-        Consultor(fa:fa-user-tie Consultor)
-        ConsultorSenior(fa:fa-star ConsultorSenior)
-        ConsultorJunior(fa:fa-child ConsultorJunior)
-    end
-    
-    %% Relaciones de Herencia
-    Consultor --|> ConsultorSenior
-    Consultor --|> ConsultorJunior
-
-    %% Atributos Protegidos
-    ConsultorSenior --> A[+ idConsultor: protected String]
-    ConsultorSenior --> B[+ tarifaPorHora: protected double]
-    ConsultorJunior --> C[+ idConsultor: protected String]
-    ConsultorJunior --> D[+ anosDeServicio: protected int]
-
-    %% Metodo Sobrescrito
-    Consultor --- M1(calcularCostoMensualEstimado(horas): double)
-    ConsultorSenior --- M2(Sobrescribe: Costo con Bono)
-    ConsultorJunior --- M3(Sobrescribe: Costo con Descuento)
-    
-    class Consultor parent;
-    class ConsultorSenior,ConsultorJunior child;
-    class M1, M2, M3 method;
-```
-
-
 ## Justificación
 
 Elegimos la jerarquía basada en la clase **Consultor** porque representa un concepto que requiere **especialización de la lógica de negocio** (Polimorfismo) dependiendo del nivel del recurso.
