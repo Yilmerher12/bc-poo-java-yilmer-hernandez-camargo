@@ -1,7 +1,8 @@
-//Clase abstracta
+package abstractas;
+
 public abstract class Consultor {
 
-    // Atributos protected para las clases hijas
+    // Atributos PROTECTED
     protected String idConsultor;
     protected String nombreConsultor;
     protected String especialidadConsultor;
@@ -18,21 +19,26 @@ public abstract class Consultor {
         this.anosDeServicio = anosDeServicio;
     }
 
-    // Metodo para mostrar info
+    // Metodo normal
     public void mostrarInformacionBasica() {
         System.out.println("ID: " + idConsultor + " | Nombre: " + nombreConsultor);
         System.out.println("Especialidad: " + especialidadConsultor + " | Años: " + anosDeServicio);
     }
 
-    //Metodo abstractos
+    // Metodo abstracto
     public abstract double calcularCostoMensualEstimado(int horasMensuales);
 
+    // Metodo ABSTRACTO
     public abstract String obtenerDescripcion();
 
     // Getters
-    public String getIdConsultor() { return idConsultor; }
-    public String getNombreConsultor() { return nombreConsultor; }
-    public String getEspecialidadConsultor() { return especialidadConsultor; }
-    public int getAnosDeServicio() { return anosDeServicio; }
-
+    public String getIdConsultor() {
+        return idConsultor;
+    }
+    public String getNombreConsultor() {
+        return nombreConsultor;
+    }
+    public int getAnosDeServicio() {
+        return anosDeServicio;
+    }
 }

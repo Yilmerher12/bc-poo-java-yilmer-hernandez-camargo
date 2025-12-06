@@ -1,7 +1,8 @@
-// Es una interfaz
+package interfaces;
+
+// Interfaz
 public interface Certificable {
 
-    //Metodos
     String listarCertificaciones();
 
     void registrarCertificacion(String nombreCertificacion, int vigenciaAnos);
