@@ -1,15 +1,15 @@
 # Semana 07: Paquetes y Excepciones - Agencia de Consultoría de Proyectos
 
-## 👤 Información del Estudiante
+## Información del Estudiante
 - **Nombre**: Yilmer Hernandez Camargo
 - **Ficha**: 3228970A
 - **Dominio**: Consultoría Empresarial "Soluciones Estratégicas"
 - **Fecha**: 31/12/2025
 
-## 📝 Descripción del Proyecto
+## Descripción del Proyecto
 Sistema de gestión para una agencia de consultoría que organiza y valida la contratación de consultores Senior y Junior. Esta semana se implementó una arquitectura profesional basada en paquetes y se añadieron validaciones robustas para manejar errores de negocio de forma controlada.
 
-## 📦 Estructura de Paquetes
+## Estructura de Paquetes
 El proyecto sigue la convención estándar `com.dominio.modulo`:
 
 | Paquete | Descripción |
@@ -19,7 +19,7 @@ El proyecto sigue la convención estándar `com.dominio.modulo`:
 | `com.consultoria.servicio/` | Contiene la lógica de negocio (`GestorConsultores.java`), validaciones, y gestión de colecciones. |
 | `com.consultoria.excepciones/` | Contiene las clases de error personalizadas del dominio. |
 
-## ⚠️ Excepciones Personalizadas
+## Excepciones Personalizadas
 
 ### 1. ContratoInvalidoException
 - **Tipo**: Checked (extends Exception)
@@ -31,7 +31,7 @@ El proyecto sigue la convención estándar `com.dominio.modulo`:
 - **Cuándo se lanza**: Se lanza cuando el sistema intenta realizar una operación que excede un límite físico o de recursos (ej: Se intenta contratar un consultor adicional cuando el equipo ya está completo).
 - **Ejemplo**: Intentar agregar el 11º consultor cuando el límite del equipo es 10.
 
-## 🚀 Cómo Ejecutar
+## Cómo Ejecutar
 
 ### Desde terminal:
 ```bash
