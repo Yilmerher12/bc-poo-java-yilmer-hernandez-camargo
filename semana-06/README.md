@@ -67,3 +67,4 @@ graph TD;
     B -.-> |implements| I1;
     B -.-> |implements| I2;
     C -.-> |implements| I2;
+  ```
