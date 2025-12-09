@@ -1,34 +1,112 @@
-# Documento de Análisis de Diseño: Semana 06
+# Análisis de Diseño - Semana 06: Agencia de Consultoría de Proyectos
 
-## 1. Abstracción y Clase Base (`Consultor.java`)
+## 1. Identificación de Abstracciones
 
-### Decisión de Diseño
-Se refactorizó la clase `Consultor` para convertirla en una **Clase Abstracta**.
+### Clase(s) Abstracta(s)
 
-### Justificación
-* **Impedir Instanciación:** Se evita crear objetos de tipo `Consultor` genérico, ya que no tiene sentido en el dominio. Todo consultor debe ser clasificado (Senior, Junior, etc.) para poder trabajar.
-* **Contrato de Comportamiento:** Se definieron métodos **abstractos** (`calcularCostoMensualEstimado`, `obtenerDescripcion`). Esto obliga a todas las clases hijas (las implementaciones concretas) a sobrescribir e implementar su propia lógica específica para el cálculo de costos y la generación de reportes.
-* **Encapsulamiento para Herencia:** Los atributos comunes (`idConsultor`, `anosDeServicio`) se definieron como `protected` para facilitar el acceso directo de las clases hijas al estado del consultor.
+**Nombre:** Consultor
 
-## 2. Implementación de Interfaces (Contratos de Capacidad)
+**¿Por qué es abstracta?**
+- **Clase incompleta:** Elegí hacerla abstracta porque no tiene sentido crear un objeto de tipo "Consultor" sin saber su nivel (Senior o Junior). **La clase abstracta impide** que creemos objetos genéricos.
+- **Comportamiento común:** Contiene atributos como `nombreConsultor` e `idConsultor` y el método `mostrarInformacionBasica()`. Estos datos y acciones son **iguales** para todos los consultores.
+- **Comportamiento que varía:** Define el método `calcularCostoMensualEstimado()` como **abstracto**. Esto obliga a cada nivel (`Senior`, `Junior`) a implementar su **propia fórmula** de cálculo de costos.
 
-Se crearon dos interfaces para modelar **capacidades** que son transversales y están desacopladas de la jerarquía de herencia.
+**Jerarquía:**
 
-### A. Interfaz `Certificable`
-Esta interfaz encapsula la **capacidad de gestionar títulos formales y activos vendibles** (certificaciones).
+Consultor
+├── ConsultorSenior
+└── ConsultorJunior
 
-* **Aplicación:** Implementada solo por `ConsultorSenior`.
-* **Justificación:** En este diseño, se decidió que únicamente el consultor de nivel Senior debe tener la funcionalidad (los métodos) para registrar y listar certificaciones, ya que estas validan su tarifa y experiencia ante el cliente. Esto aísla la funcionalidad solo donde se necesita.
+---
 
-### B. Interfaz `Evaluable`
-Esta interfaz modela la **capacidad universal de ser calificado o puntuado**.
+## 2. Interfaces Implementadas
 
-* **Aplicación:** Implementada por `ConsultorSenior` y `ConsultorJunior`.
-* **Justificación:** La acción de "ser evaluado" es un requisito transversal que aplica a todos los niveles de consultor. El uso de esta interfaz permite que el código de evaluación sea genérico (Polimorfismo de Interfaces), ya que el sistema solo necesita verificar que un objeto cumpla con el contrato `Evaluable`, sin importar si es Senior o Junior.
+### Interface 1: Certificable
 
-## 3. Demostración de Principios de POO
+**Capacidad que define:** La capacidad de un objeto para **gestionar títulos o activos formales** (certificaciones). Es el contrato para manejar una lista de certificaciones.
 
-El `Main.java` demuestra la efectividad del diseño:
+**Clases que la implementan:**
+- **ConsultorSenior:** Tiene sentido que implemente esta interfaz porque su alto costo y experiencia deben estar respaldados por la **capacidad** de registrar y listar certificaciones oficiales de la industria.
 
-* **Polimorfismo por Herencia (Abstracta):** Al recorrer la lista de tipo `List<Consultor>`, se comprueba que el motor de Java selecciona la implementación correcta de `calcularCostoMensualEstimado` para cada objeto hijo (`Senior` usa su fórmula, `Junior` usa la suya) utilizando una única línea de código.
-* **Polimorfismo por Interfaces:** Al usar variables de tipo `Certificable` o `Evaluable`, se demuestra que los objetos pueden ser referenciados por sus capacidades específicas. Esto permite utilizar las funciones de la interfaz de forma segura, incluso si el objeto real es de una clase compleja.
+### Interface 2: Evaluable
+
+**Capacidad que define:** La capacidad de un objeto para **ser calificado** o puntuado por un cliente o gerente, y para calcular su promedio de desempeño.
+
+**Clases que la implementan:**
+- **ConsultorSenior:** Todos los consultores deben ser evaluados.
+- **ConsultorJunior:** Tiene sentido que implemente esta interfaz porque, al ser nuevos, su desempeño y potencial deben ser **constantemente evaluados** para su desarrollo.
+
+---
+
+## 3. Decisiones de Diseño
+
+### ¿Por qué Clase Abstracta vs Interface?
+
+**Elegí clase abstracta para Consultor porque:**
+- **Relación "es-un" clara:** Un Senior **ES UN** Consultor, y un Junior **ES UN** Consultor.
+- **Necesitaba compartir estado (atributos):** Los consultores comparten datos protegidos como `tarifaPorHoraBase` y `anosDeServicio` que son vitales para la herencia.
+- **Había comportamiento común implementable:** El método `mostrarInformacionBasica()` tiene un código que se puede escribir una sola vez y heredar.
+
+**Elegí interfaces (Certificable, Evaluable) porque:**
+- **Define una capacidad independiente de jerarquía:** La capacidad de "ser evaluado" debe ser aplicada a consultores, pero quizá también a un futuro `Proyecto`. Es modular.
+- **Necesitaba múltiple implementación:** El `ConsultorSenior` necesita **dos capacidades** al mismo tiempo: ser evaluado y ser certificado. Las interfaces permiten esto, mientras que Java solo permite heredar de una clase (evitando el problema de la herencia múltiple).
+- **Solo define contrato, no implementación:** Las interfaces solo establecen la regla (ej: debe haber un método `obtenerPromedioEvaluacion()`); la clase concreta (`Senior` o `Junior`) pone la lógica.
+
+---
+
+## 4. Principios SOLID Aplicados
+
+### Single Responsibility Principle (SRP)
+Cada clase/módulo tiene una responsabilidad única:
+- `Consultor` solo maneja la información base y el contrato de costos.
+- `Certificable` solo maneja la responsabilidad de la **gestión de títulos**.
+- `Evaluable` solo maneja la responsabilidad de la **gestión de puntuaciones**.
+
+### Open/Closed Principle (OCP)
+El diseño está **abierto a extensión** pero **cerrado a modificación**.
+- Si queremos un nuevo `ConsultorPracticante`, simplemente creamos una nueva clase que herede de `Consultor` y le implementamos `Evaluable`. **No necesitamos tocar el código** de `ConsultorSenior` o `ConsultorJunior` que ya funciona.
+
+### Liskov Substitution Principle (LSP)
+Se cumple la sustitución:
+- La lista `List<Consultor>` puede contener `ConsultorSenior` y `ConsultorJunior`. Al recorrer el bucle, al llamar a `c.calcularCostoMensualEstimado()`, el código funciona correctamente porque cada subclase garantiza la implementación del método del padre.
+
+### Interface Segregation Principle (ISP)
+Creamos interfaces específicas y pequeñas:
+- Dividimos las capacidades en `Certificable` y `Evaluable`. Esto evita que el `ConsultorJunior` (que no necesita certificaciones) sea **forzado a implementar** los métodos de `Certificable`, manteniendo sus responsabilidades limpias.
+
+### Dependency Inversion Principle (DIP)
+El código de alto nivel depende de abstracciones:
+- En `Main.java`, el código importante depende de `Consultor` (Clase Abstracta) y de `Evaluable` (Interfaz), no de los detalles internos de las clases concretas (`ConsultorSenior`). Esto hace que el código sea flexible a cambios.
+
+---
+
+## 5. Mejoras Logradas
+
+**Antes (Semana 05):**
+- El código permitía crear un `new Consultor()`, lo cual no tenía sentido en el negocio.
+- Era difícil aplicar nuevas capacidades (como Evaluación) a múltiples clases sin crear una herencia compleja.
+
+**Después (Semana 06):**
+- **Mejoras logradas:** Se garantiza que solo se creen objetos válidos. Se permite la **Múltiple Implementación** de capacidades.
+- **Ventajas del nuevo diseño:** El código es más modular y fácil de mantener. La lógica de evaluación puede ser aplicada a otros objetos fuera de la jerarquía (ej: un `Proyecto`) sin cambiar nada.
+
+---
+
+## 6. Diagrama de Clases
+
+*(Este diagrama visualiza la estructura que permite el diseño de tu sistema)*
+
+```mermaid
+graph TD;
+    A[<<abstract>> Consultor]
+    B(ConsultorSenior)
+    C(ConsultorJunior)
+    I1(<<interface>> Certificable)
+    I2(<<interface>> Evaluable)
+    
+    A --> B;
+    A --> C;
+    
+    B -.-> |implementa| I1;
+    B -.-> |implementa| I2;
+    C -.-> |implementa| I2;
