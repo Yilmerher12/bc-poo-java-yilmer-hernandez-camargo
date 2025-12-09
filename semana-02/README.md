@@ -1,32 +1,43 @@
-# Bootcamp POO Java - Yilmer Hernandez Camargo
+# Semana 02 - Fundamentos de Clases, Objetos y Colecciones
+## Bootcamp POO Java - Yilmer Hernandez Camargo
 ## 💼 Dominio
 **Dominio Asignado:** Consultoría Empresarial "Soluciones Estratégicas"
 
-**Nombre:** `README.md` (dentro de la carpeta `semana-02/`)
+**Nombre:** `README.md` (dentro de la carpeta `semana-01/`)
 
-## Semana 02 Comparación de Paradigmas
+## Descripción
+Implementación de la estructura base del sistema de Consultoría Empresarial. Esta semana se enfocó en:
+1.  **Crear nuevas clases** (`Cliente` y `Consultor`) para expandir el dominio.
+2.  **Implementar relaciones** (Agregación) en `ProyectoConsultoria` y `Facturacion` utilizando referencias a `Cliente` y `Consultor`.
+3.  **Utilizar la colección `ArrayList`** dentro de la clase gestora (`GestorProyectos`) para almacenar y manipular colecciones de objetos `ProyectoConsultoria`.
 
-## 📝 Descripción
+## Objetivos Cumplidos (Basado en la Guía de Ejercicios)
 
-Se realiza la Comparación de paradigmas los cuales son la programación estructurada (PE) y la Programación Orientada a Objetos (POO) de la Actividad 2.
+### Ejercicio 1: Crear Nuevas Clases (30 puntos)
+- [x] Clase **`Cliente.java`** creada.
+- [x] Clase **`Consultor.java`** creada.
 
-## 🎯 Objetivos Cumplidos
+### Ejercicio 2: Implementar Relaciones (25 puntos)
+- [x] Relación entre **`ProyectoConsultoria`**, **`Cliente`** y **`Consultor`**.
+- [x] Relación entre **`Facturacion`** y **`Cliente`**.
+- [x] Demostración de comunicación entre objetos (ej., `Facturacion` actualiza el saldo del `Cliente`).
 
-- [x] Comparación entre los paradigmas (PE y POO).
-- [x] Ejemplos de codigo usando JAVA comparando los dos paradigmas.
-- [x] Documentar análisis del dominio y desafios a los que se enfrentó.
+### Ejercicio 3: Usar ArrayList (20 puntos)
+- [x] Clase gestora **`GestorProyectos.java`** implementada.
+- [x] Uso de `ArrayList<ProyectoConsultoria>` para manejar la lista de proyectos.
 
-## 📂 Archivos Entregados
+### Ejercicio 4: Main Completo (25 puntos)
+- [x] El programa `Main.java` demuestra la creación de todos los objetos, las relaciones y el uso del gestor de colecciones.
 
-- `docs` - Carpeta donde se encuentra el archivo ANALISIS.md
-- `docs/ANALISIS.md` - Documento .md que contiene el analisis y comparacion de los dos paradigmas
-- `java` - Carpeta que contiene el proyecto JAVA con sus archivos compilados y .java
-- `java/src` - Archivos .java con la realizacion de la actividad en PE y POO
-- `README.md` - Documento que muestra la información acerca de la actividad que corresponde a la semana-02
+## Archivos Entregados
+- `src/Facturacion.java`
+- `src/Cliente.java`
+- `src/ProyectoConsultoria.java`
+- `src/Consultor.java`
+- `src/GestorProyectos.java`
+- `src/Main.java`
 
-### 🔗 Comparación de los paradigmas PE y POO
-Revisar la carpeta [src](java/src/) para encontrar los archivos necesarios para ejecutas codigo JAVA que son correspondientes a la actividad 2.
-## 🚀 Instrucciones de Ejecución
+## Instrucciones de Ejecución
 
 ```bash
 cd src
