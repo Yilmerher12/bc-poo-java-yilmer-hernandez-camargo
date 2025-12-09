@@ -1,34 +1,43 @@
-# Bootcamp POO Java - Yilmer Hernandez Camargo
+# Semana 03 - Encapsulación y Constructores
+## Bootcamp POO Java - Yilmer Hernandez Camargo
 ## Dominio
 **Dominio Asignado:** Consultoría Empresarial "Soluciones Estratégicas"
 
 **Nombre:** `README.md` (dentro de la carpeta `semana-03/`)
 
-## Semana 03 Primera Clase Simple 
 
-## Descripción
+## 🎯 Objetivos Cumplidos de la Semana
 
-Se crear la primera clase simple con 3 atributos y 1 método que corresponde a la actividad 3.
+Esta semana nos enfocamos en **proteger la integridad de los datos** y hacer que la creación de objetos fuera más flexible, cumpliendo con los siguientes requisitos:
 
-## 🎯 Objetivos Cumplidos
+- [x] **Encapsulación Completa:** Todos los atributos de todas las clases (`Cliente`, `Consultor`, `Facturacion`, `ProyectoConsultoria`, `GestorProyectos`) son `private`.
+- [x] **Getters y Setters:** Implementamos los métodos de acceso necesarios.
+- [x] **Validaciones:** Agregamos reglas de negocio y validaciones en los *setters* y constructores (ej., asegurando que el presupuesto sea positivo y que el NIT sea válido).
+- [x] **Sobrecarga de Constructores:** Cada clase principal tiene mínimo **tres constructores** para permitir la creación de objetos con diferentes niveles de información inicial.
+- [x] **Documento MEJORAS.md:** Documentamos todas las mejoras realizadas en ese archivo.
 
-- [x] Estructuracion primera clase en JAVA.
-- [x] Identificacion de atributos y metodo de la clase.
-- [x] Intanciación de 3 objetos en el archivo Main.java
-- [x] Uso de buenas practicas.
+---
 
 ## Archivos Entregados
 
-- `docs` - Carpeta donde se encuentra el archivo ANALISIS.md
-- `docs/MEJORAS.md` - Contiene información acerca de las mejoras que se hicieron en esta semana. 
-- `java` - Carpeta que contiene el proyecto JAVA con sus archivos compilados y .java
-- `java/src` - Archivos .java con la realizacion de la actividad en PE y POO
-- `README.md` - Documento que muestra la información acerca de la actividad correspondiente a la semana-03
+El proyecto de la Semana 03 incluye los archivos principales del modelo de negocio, todos refactorizados con las mejoras de encapsulación:
 
-### Clases en JAVA
-Revisar la carpeta [src](/semana-03/src/) para encontrar los archivos necesarios para ejecutas codigo JAVA que son correspondientes a la actividad 3.
+### Clases en JAVA (`src/`)
+- `Cliente.java`
+- `Consultor.java`
+- `Facturacion.java`
+- `GestorProyectos.java`
+- `ProyectoConsultoria.java`
+- `Main.java` Contiene la demostración de la sobrecarga y las validaciones
+
+### Documentación
+- `MEJORAS.md` Contiene la explicación detallada de las validaciones y constructores aplicados.
+
+---
 
 ## Instrucciones de Ejecución
+
+Para ejecutar la demostración que hicimos con los constructores y la lógica de facturación:
 
 ```bash
 cd src
