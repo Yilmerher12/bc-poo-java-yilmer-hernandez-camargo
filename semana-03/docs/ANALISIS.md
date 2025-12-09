@@ -1,55 +1,112 @@
-# Mejoras - Ejercicios Semanales | Semana 03
+# Análisis de Diseño - Semana 06: Agencia de Consultoría de Proyectos
 
-## 1. Encapsulación Completa y Validaciones (Ejercicios 1 y 3)
+## 1. Identificación de Abstracciones
 
-Se han aplicado los tres niveles de encapsulación (atributos `private`, *Getters* y *Setters*) a las **5 clases**. La **Encapsulación Completa** se logró al añadir validaciones rigurosas en los *Setters* para proteger la integridad de los datos.
+### Clase(s) Abstracta(s)
 
-### 1.1 Clase: Cliente
-- **Atributos encapsulados:** `nit`, `companyName`, `accountStatus`.
-- **Validaciones agregadas:** Se verifica que el `companyName` no sea nulo ni vacío. Se utiliza un método `private` (`isNitValid`) para asegurar que el `nit` cumpla con la longitud mínima requerida.
+**Nombre:** Consultor
 
-### 1.2 Clase: Consultor
-- **Atributos encapsulados:** `hourlyFee`, `yearsOfService`.
-- **Validaciones agregadas:** Se exige que la **Tarifa por Hora** (`hourlyFee`) sea **mayor que cero**. Se impide que los `yearsOfService` sean valores negativos.
+**¿Por qué es abstracta?**
+- **Clase incompleta:** Elegimos hacerla abstracta porque no tiene sentido crear un objeto de tipo "Consultor" sin saber su nivel (Senior o Junior). **La clase abstracta impide** que creemos objetos genéricos.
+- **Comportamiento común:** Contiene atributos como `nombreConsultor` e `idConsultor` y el método `mostrarInformacionBasica()`. Estos datos y acciones son **iguales** para todos los consultores.
+- **Comportamiento que varía:** Define el método `calcularCostoMensualEstimado()` como **abstracto**. Esto obliga a cada nivel (`Senior`, `Junior`) a implementar su **propia fórmula** de cálculo de costos.
 
-### 1.3 Clase: ConsultingProject
-- **Atributos encapsulados:** `projectBudget`, `projectCode`.
-- **Validaciones agregadas:** Se exige que el **Presupuesto** (`projectBudget`) sea **positivo**. El `projectCode` debe cumplir un rango de longitud definido.
+**Jerarquía:**
 
-### 1.4 Clase: Billing
-- **Atributos encapsulados:** `totalAmount`, `invoiceNumber`.
-- **Validaciones agregadas:** Se exige que el **Monto Total** (`totalAmount`) sea **positivo**. Se verifica que el `invoiceNumber` cumpla con el formato de longitud requerido.
-
-### 1.5 Clase: ProjectManager
-- **Atributos encapsulados:** `consultancyName`, `projectsList`.
-- **Validaciones agregadas:** Se exige que el `consultancyName` no sea nulo ni vacío en el constructor, asegurando que el gestor tenga siempre una identidad.
+Consultor
+├── ConsultorSenior
+└── ConsultorJunior
 
 ---
 
-## 2. Constructores Sobrecargados (Ejercicio 2)
+## 2. Interfaces Implementadas
 
-Se implementó la **Sobrecarga de Constructores** en todas las clases principales, creando opciones flexibles (Básico y Mínimo) que llaman al constructor principal usando **`this(...)`**.
+### Interface 1: Certificable
 
-### 2.1 Clase: Cliente (3 Constructores)
-- **Constructor Básico:** Permite crear el objeto solo con 4 datos clave, asignando el `accountStatus` a **0.0** por defecto.
-- **Constructor Mínimo:** Asigna **valores genéricos** ("N/A") a los atributos de contacto y sector.
+**Capacidad que define:** La capacidad de un objeto para **gestionar títulos o activos formales** (certificaciones). Es el contrato para manejar una lista de certificaciones.
 
-### 2.2 Clase: Consultor (3 Constructores)
-- **Constructor Básico:** Asume **0 años de servicio** por defecto.
-- **Constructor Mínimo:** Asigna una tarifa base (`30.0`) y especialidad genérica ("General").
+**Clases que la implementan:**
+- **ConsultorSenior:** Tiene sentido que implemente esta interfaz porque su alto costo y experiencia deben estar respaldados por la **capacidad** de registrar y listar certificaciones oficiales de la industria.
 
-### 2.3 Clase: ConsultingProject (3 Constructores)
-- **Constructor Borrador:** Permite crear el proyecto como `isActive = false` para la etapa de planificación inicial.
-- **Constructor Mínimo Activo:** Permite asociar el proyecto a un `Cliente`, asumiendo que el `Consultor` será asignado más tarde (`Consultor = null`).
+### Interface 2: Evaluable
 
-### 2.4 Clase: ProjectManager (2 Constructores)
-- **Constructor Principal:** Recibe el nombre de la consultoría.
-- **Constructor Por Defecto:** Permite inicializar el gestor sin argumentos, asignando un nombre genérico ("Consultoría Global") y una lista de proyectos vacía.
+**Capacidad que define:** La capacidad de un objeto para **ser calificado** o puntuado por un cliente o gerente, y para calcular su promedio de desempeño.
+
+**Clases que la implementan:**
+- **ConsultorSenior:** Todos los consultores deben ser evaluados.
+- **ConsultorJunior:** Tiene sentido que implemente esta interfaz porque, al ser nuevos, su desempeño y potencial deben ser **constantemente evaluados** para su desarrollo.
 
 ---
 
-## 3. Beneficios Logrados
+## 3. Decisiones de Diseño
 
-1.  **Integridad de Datos Garantizada:** Al forzar la ejecución de las validaciones en los Constructores (mediante **`this(...)`**), se asegura que **ningún objeto** en el sistema pueda ser creado con datos inconsistentes.
-2.  **Facilidad de Uso (Flexibilidad):** La Sobrecarga de Constructores permite al programador crear objetos con la mínima cantidad de datos necesarios, sin tener que inventar valores para los campos opcionales.
-3.  **Mantenibilidad del Código:** La lógica de validación reside en un único lugar (*Setter*), facilitando la actualización de las reglas de negocio.
+### ¿Por qué Clase Abstracta vs Interface?
+
+**Elegí clase abstracta para Consultor porque:**
+- **Relación "es-un" clara:** Un Senior **ES UN** Consultor, y un Junior **ES UN** Consultor.
+- **Necesitaba compartir estado (atributos):** Los consultores comparten datos protegidos como `tarifaPorHoraBase` y `anosDeServicio` que son vitales para la herencia.
+- **Había comportamiento común implementable:** El método `mostrarInformacionBasica()` tiene un código que se puede escribir una sola vez y heredar.
+
+**Elegí interfaces (Certificable, Evaluable) porque:**
+- **Define una capacidad independiente de jerarquía:** La capacidad de "ser evaluado" debe ser aplicada a consultores, pero quizá también a un futuro `Proyecto`. Es modular.
+- **Necesitaba múltiple implementación:** El `ConsultorSenior` necesita **dos capacidades** al mismo tiempo: ser evaluado y ser certificado. Las interfaces permiten esto, mientras que Java solo permite heredar de una clase (evitando el problema de la herencia múltiple).
+- **Solo define contrato, no implementación:** Las interfaces solo establecen la regla (ej: debe haber un método `obtenerPromedioEvaluacion()`); la clase concreta (`Senior` o `Junior`) pone la lógica.
+
+---
+
+## 4. Principios SOLID Aplicados
+
+### Single Responsibility Principle (SRP)
+Cada clase/módulo tiene una responsabilidad única:
+- `Consultor` solo maneja la información base y el contrato de costos.
+- `Certificable` solo maneja la responsabilidad de la **gestión de títulos**.
+- `Evaluable` solo maneja la responsabilidad de la **gestión de puntuaciones**.
+
+### Open/Closed Principle (OCP)
+El diseño está **abierto a extensión** pero **cerrado a modificación**.
+- Si queremos un nuevo `ConsultorPracticante`, simplemente creamos una nueva clase que herede de `Consultor` y le implementamos `Evaluable`. **No necesitamos tocar el código** de `ConsultorSenior` o `ConsultorJunior` que ya funciona.
+
+### Liskov Substitution Principle (LSP)
+Se cumple la sustitución:
+- La lista `List<Consultor>` puede contener `ConsultorSenior` y `ConsultorJunior`. Al recorrer el bucle, al llamar a `c.calcularCostoMensualEstimado()`, el código funciona correctamente porque cada subclase garantiza la implementación del método del padre.
+
+### Interface Segregation Principle (ISP)
+Creamos interfaces específicas y pequeñas:
+- Dividimos las capacidades en `Certificable` y `Evaluable`. Esto evita que el `ConsultorJunior` (que no necesita certificaciones) sea **forzado a implementar** los métodos de `Certificable`, manteniendo sus responsabilidades limpias.
+
+### Dependency Inversion Principle (DIP)
+El código de alto nivel depende de abstracciones:
+- En `Main.java`, el código importante depende de `Consultor` (Clase Abstracta) y de `Evaluable` (Interfaz), no de los detalles internos de las clases concretas (`ConsultorSenior`). Esto hace que el código sea flexible a cambios.
+
+---
+
+## 5. Mejoras Logradas
+
+**Antes (Semana 05):**
+- El código permitía crear un `new Consultor()`, lo cual no tenía sentido en el negocio.
+- Era difícil aplicar nuevas capacidades (como Evaluación) a múltiples clases sin crear una herencia compleja.
+
+**Después (Semana 06):**
+- **Mejoras logradas:** Se garantiza que solo se creen objetos válidos. Se permite la **Múltiple Implementación** de capacidades.
+- **Ventajas del nuevo diseño:** El código es más modular y fácil de mantener. La lógica de evaluación puede ser aplicada a otros objetos fuera de la jerarquía (ej: un `Proyecto`) sin cambiar nada.
+
+---
+
+## 6. Diagrama de Clases
+
+*(Este diagrama visualiza la estructura que permite el diseño de tu sistema)*
+
+```mermaid
+graph TD;
+    A[<<abstract>> Consultor]
+    B(ConsultorSenior)
+    C(ConsultorJunior)
+    I1(<<interface>> Certificable)
+    I2(<<interface>> Evaluable)
+    
+    A --> B;
+    A --> C;
+    
+    B -.-> |implementa| I1;
+    B -.-> |implementa| I2;
+    C -.-> |implementa| I2;
