@@ -1,4 +1,4 @@
-# Bootcamp POO Java - Juan Pablo Castillo Velasquez
+# Bootcamp POO Java - Yilmer Hernandez Camargo
 
 ## Información
 
