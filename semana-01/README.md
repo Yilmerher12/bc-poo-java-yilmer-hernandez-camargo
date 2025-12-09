@@ -4,27 +4,22 @@
 
 **Nombre:** `README.md` (dentro de la carpeta `semana-01/`)
 
-## Semana 01 Clases y Objetos
+# Semana 01 - Introducción a POO
 
 ## 📝 Descripción
-
-Se realiza la identificacion de clases y objetos con base a los dominios asignados por el profesor a cada estudiante.
+Implementación inicial de las clases principales del dominio de **Gestión de Consultoría y Facturación**. Se aplicaron los conceptos fundamentales de POO como **Clase, Objeto, Atributo, Método, Constructor, Getters y Setters**.
 
 ## 🎯 Objetivos Cumplidos
-
-- [x] Implementar clase principal del dominio.
-- [x] Implementar los 5 objetos del dominio.
-- [x] Identificación de atributos y métodos de cada objeto.
-- [x] Documentar análisis del dominio y desafios a los que se enfrentó.
+- [x] Implementar clase principal del dominio (`ProyectoConsultoria.java`)
+- [x] Implementar clase secundaria relacionada (`Factura.java`)
+- [x] Crear programa de demostración (`Main.java`)
+- [x] Documentar análisis del dominio (`docs/ANALISIS.md`)
 
 ## 📂 Archivos Entregados
-
-- `docs` - Carpeta donde se encuentra el archivo ANALISIS.md
-- `docs/ANALISIS.md` - Documento .md que contiene el analisis del dominio 
-- `README.md` - Documento donde se documenta información acerca de la semana
-
-### 🔗 Análisis del Dominio
-Revisar el archivo [ANALISIS.md](docs/ANALISIS.md) para el detalle de la asignación de atributos y métodos.
+- `src/ProyectoConsultoria.java` - Clase principal (proyecto de consultoría).
+- `src/Factura.java` - Clase secundaria (facturación y pagos).
+- `src/Main.java` - Programa de demostración de ambas clases.
+- `docs/ANALISIS.md` - Análisis y diseño orientado a objetos.
 
 ## 🚀 Instrucciones de Ejecución
 
